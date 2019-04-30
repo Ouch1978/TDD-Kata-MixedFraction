@@ -10,7 +10,24 @@ namespace MixedFraction
     {
         public static string MixedFraction( string s )
         {
-            return s;
+            return CalculateResult( ParseNumbers( s ) );
+        }
+
+        public static Tuple<int , int> ParseNumbers( string input )
+        {
+            string[] numbers = input.Split( '/' );
+
+            if( numbers.Contains( "0" ) )
+            {
+                throw new DivideByZeroException();
+            }
+
+            return null;
+        }
+
+        public static string CalculateResult( Tuple<int , int> inputNumbers )
+        {
+            return string.Empty;
         }
     }
 }
