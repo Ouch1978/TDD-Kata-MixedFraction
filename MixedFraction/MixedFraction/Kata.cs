@@ -8,26 +8,52 @@ namespace MixedFraction
 {
     public class Kata
     {
+        private static int _dividend, _divisor, _quatation, _remainder;
+
         public static string MixedFraction( string s )
         {
-            return CalculateResult( ParseNumbers( s ) );
+            ParseNumbers( s );
+            return CalculateResult();
         }
 
-        public static Tuple<int , int> ParseNumbers( string input )
+        public static void ParseNumbers( string input )
         {
             string[] numbers = input.Split( '/' );
 
-            if( numbers.Contains( "0" ) )
+            _dividend = int.Parse( numbers[ 0 ] );
+
+            _divisor = int.Parse( numbers[ 1 ] );
+
+            if( _divisor == 0 )
             {
                 throw new DivideByZeroException();
             }
-
-            return null;
         }
 
-        public static string CalculateResult( Tuple<int , int> inputNumbers )
+        public static string CalculateResult()
         {
+            _quatation = _dividend / _divisor;
+
+            _remainder = _dividend % _divisor;
+
+            if( _remainder == 0 )
+            {
+                return _quatation.ToString();
+            }
+
             return string.Empty;
         }
+
+        static int CalculateGcd( int[] numbers )
+        {
+            return numbers.Aggregate( CalculateGcd );
+        }
+
+        static int CalculateGcd( int a , int b )
+        {
+            return b == 0 ? a : CalculateGcd( b , a % b );
+        }
+
+
     }
 }
