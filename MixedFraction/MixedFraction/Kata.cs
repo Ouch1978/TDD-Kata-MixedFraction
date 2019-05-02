@@ -10,9 +10,12 @@ namespace MixedFraction
     {
         private static int _dividend, _divisor, _quatation, _remainder;
 
+        private static bool _isResultPositive = false;
+
         public static string MixedFraction( string s )
         {
             ParseNumbers( s );
+
             return CalculateResult();
         }
 
@@ -28,6 +31,8 @@ namespace MixedFraction
             {
                 throw new DivideByZeroException();
             }
+
+            ProcessNegtive();
         }
 
         public static string CalculateResult()
@@ -43,11 +48,30 @@ namespace MixedFraction
 
             int gcd = CalculateGcd( new int[] { _remainder , _divisor } );
 
-            return $"{_quatation} {_remainder / gcd}/{_divisor / gcd}";
+            string result = string.Empty;
+
+            if( _quatation != 0 )
+            {
+                result = $"{_quatation} ";
+            }
+
+            if (_isResultPositive == false)
+            {
+                result = $"-{result} ";
+            }
+
+            return $"{result}{_remainder / gcd}/{_divisor / gcd}";
         }
 
 
+        static void ProcessNegtive()
+        {
+            _isResultPositive = ( _dividend * _divisor ) >= 0;
 
+            _dividend = Math.Abs( _dividend );
+
+            _divisor = Math.Abs( _divisor );
+        }
 
         static int CalculateGcd( int[] numbers )
         {
