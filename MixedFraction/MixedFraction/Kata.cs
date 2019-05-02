@@ -16,7 +16,9 @@ namespace MixedFraction
         {
             ParseNumbers( s );
 
-            return CalculateResult();
+            string negative = _isResultPositive != true ? "-" : string.Empty;
+
+            return negative + CalculateResult();
         }
 
         public static void ParseNumbers( string input )
@@ -49,11 +51,6 @@ namespace MixedFraction
             int gcd = CalculateGcd( new int[] { _remainder , _divisor } );
 
             string result = string.Empty;
-
-            if( _isResultPositive == false )
-            {
-                result = "-";
-            }
 
             if( _quatation != 0 )
             {

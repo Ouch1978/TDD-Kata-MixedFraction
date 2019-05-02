@@ -18,6 +18,9 @@ namespace MixedFractionTest
             Assert.AreEqual( "0" , Kata.MixedFraction( "0/18891" ) );
             Assert.AreEqual( "-1 3/7" , Kata.MixedFraction( "-10/7" ) );
             Assert.AreEqual( "3 1/7" , Kata.MixedFraction( "-22/-7" ) );
+            Assert.AreEqual( "-9" , Kata.MixedFraction( "-27/3" ) );
+            Assert.AreEqual( "-9" , Kata.MixedFraction( "27/-3" ) );
+
             Assert.AreEqual( "-195595/564071" , Kata.MixedFraction( "-195595/564071" ) );
 
             Assert.Throws( typeof( DivideByZeroException ) , delegate { Kata.MixedFraction( "0/0" ); } );
