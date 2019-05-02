@@ -41,8 +41,13 @@ namespace MixedFraction
                 return _quatation.ToString();
             }
 
-            return string.Empty;
+            int gcd = CalculateGcd( new int[] { _remainder , _divisor } );
+
+            return $"{_quatation} {_remainder / gcd}/{_divisor / gcd}";
         }
+
+
+
 
         static int CalculateGcd( int[] numbers )
         {
