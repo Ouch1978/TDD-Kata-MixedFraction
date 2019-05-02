@@ -10,7 +10,7 @@ namespace MixedFractionTest
         [Test]
         public void BasicTests()
         {
-            //Assert.AreEqual( "4 2/3" , Kata.MixedFraction( "42/9" ) );
+            Assert.AreEqual( "4 2/3" , Kata.MixedFraction( "42/9" ) );
             Assert.AreEqual( "2" , Kata.MixedFraction( "6/3" ) );
             Assert.AreEqual( "1" , Kata.MixedFraction( "1/1" ) );
             Assert.AreEqual( "1" , Kata.MixedFraction( "11/11" ) );

@@ -50,14 +50,14 @@ namespace MixedFraction
 
             string result = string.Empty;
 
-            if( _quatation != 0 )
+            if( _isResultPositive == false )
             {
-                result = $"{_quatation} ";
+                result = "-";
             }
 
-            if (_isResultPositive == false)
+            if( _quatation != 0 )
             {
-                result = $"-{result} ";
+                result += $"{_quatation} ";
             }
 
             return $"{result}{_remainder / gcd}/{_divisor / gcd}";
@@ -66,7 +66,7 @@ namespace MixedFraction
 
         static void ProcessNegtive()
         {
-            _isResultPositive = ( _dividend * _divisor ) >= 0;
+            _isResultPositive = ( ( long ) _dividend * ( long ) _divisor ) >= 0;
 
             _dividend = Math.Abs( _dividend );
 
